@@ -28,5 +28,5 @@ cat data.csv
 # write data to database--remove later
 # bash ./write-to-db.sh
 # write to database 
-mysql -u root -p"root" -e "LOAD DATA INFILE ./data.csv INTO TABLE tblsurvey FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';"
-mysqldump -u root -p"root" task4 > task4.sql
+mysql -u root -p"root" -e "LOAD DATA INFILE 'task4-data/data.csv' INTO TABLE tblsurvey IN task4 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'"
+# mysqldump -u root -p"root" task4 > task4.sql
