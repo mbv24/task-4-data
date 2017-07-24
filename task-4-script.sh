@@ -20,7 +20,7 @@ TIMESTAMP=`date --iso-8601=seconds`
 # create unique identifier
 IDENTIFIER=`echo "$RANDOM$RANDOM$RANDOM"`
 # write data to csv file
-echo "$IDENTIFIER,$TIMESTAMP,$BIRTHMONTH,$LANGNUMBER,$BIRTHCOUNTRY,$MIDINITIAL,$LANGWANT" >> ./data.csv
+echo "$IDENTIFIER,$TIMESTAMP,$BIRTHMONTH,$LANGNUMBER,$BIRTHCOUNTRY,$MIDINITIAL,$LANGWANT" > ./data.csv
 # read out data in csv file 
 cat data.csv  
 # move csv file to /var/lib/mysqlfiles/
