@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# Survey questions
-
-# first question
+# first survey question
 echo "In which month were you born?"
 read BIRTHMONTH
 # second question
@@ -25,8 +23,9 @@ IDENTIFIER=`echo "$RANDOM$RANDOM$RANDOM"`
 echo "$IDENTIFIER,$TIMESTAMP,$BIRTHMONTH,$LANGNUMBER,$BIRTHCOUNTRY,$MIDINITIAL,$LANGWANT" >> ./data.csv
 # read out data in csv file 
 cat data.csv  
-# write data to database--remove later
-# bash ./write-to-db.sh
-# write to database 
-mysql -u root -p"root" -e "LOAD DATA INFILE 'task4-data/data.csv' INTO TABLE tblsurvey IN task4 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'"
-# mysqldump -u root -p"root" task4 > task4.sql
+# move csv file to /var/lib/mysqlfiles/
+sudo cp ./data.csv /var/lib/mysql-files/
+# write csv file to database
+mysql -u root -p"root" -e "USE task4; LOAD DATA INFILE '/var/lib/mysql-files/data.csv' INTO TABLE tblsurvey FIELDS TERMINATED BY ',' "
+# create sql file of database
+mysqldump -u root -p"root" task4 > `date --iso`-task-4-data.sql
